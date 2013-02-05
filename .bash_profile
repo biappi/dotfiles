@@ -37,6 +37,7 @@ man() {
 # - Prompt
  
 . ~/.git-prompt.sh
+. ~/.git-autocompletion.sh
  
 export PS1='\[$BLUE\]\u\[$BASE0\]@\[$BLUE\]\h \[$CYAN\]\W\[$BASE0\]$(__git_ps1 " \[$YELLOW\]%s")\[$BASE0\]\$ \[$RESET\]'
  

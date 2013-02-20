@@ -9,6 +9,8 @@ VERBOSE=
 vecho() {
 	[[ -n ${VERBOSE} ]] && echo "$@"
 }
+FORCE=
+[[ " $* " == *" -f "* ]] && { FORCE=yes; vecho "force: overwriting all files"; }
 
 # top dir of our dotfiles
 topdir=$(readlink -f ${BASH_SOURCE[0]}); topdir=${topdir%/bin/*}/dotfiles
@@ -25,7 +27,7 @@ maybe_link() {
 	[[ -n ${src} && -n ${dst} ]] || return 1
 	[[ -d ${src} ]] && return 1
 
-	if [[ -e ${dst} ]] ; then
+	if [[ -e ${dst} && -z ${FORCE} ]] ; then
 		# don't deal with anything but files
 		[[ -f ${dst} ]] || { vecho "${dst} is not a file"; return 0; }
 		# and don't touch symlinked files, even if they don't point to us

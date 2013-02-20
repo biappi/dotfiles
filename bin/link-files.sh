@@ -9,6 +9,7 @@ VERBOSE=
 vecho() {
 	[[ -n ${VERBOSE} ]] && echo "$@"
 }
+# and to be really lethal
 FORCE=
 [[ " $* " == *" -f "* ]] && { FORCE=yes; vecho "force: overwriting all files"; }
 
@@ -40,6 +41,13 @@ maybe_link() {
 			vecho "leaving local (modified) file ${dst} alone"
 			return 0
 		fi
+	fi
+	if [[ -e ${dst} && -n ${FORCE} ]]; then
+		# preserve the file/thing we'd otherwise destroy
+		local bucketf=${dst//\//_}.$(date "+%FT%T" -r "${dst}")
+		mkdir -p "${topdir%/*}"/bit-bucket && \
+			mv "${dst}" "${topdir%/*}"/bit-bucket/${bucketf}
+		vecho "moved ${dst} to ${bucketf}"
 	fi
 
 	# create necessary dirs, and preserve permissions like the original

@@ -40,8 +40,22 @@ maybe_link() {
 		fi
 	fi
 
+	# create necessary dirs, and preserve permissions like the original
+	local bdir=${dst%/*}; bdir=${bdir#${HOME}}
+	local sdir=${src%${bdir}/${dst##*/}}
+	local mdir=${HOME} d=
+	for d in ${bdir//\// } ; do
+		mdir+=/${d}
+		sdir+=/${d}
+		# we already checked above these are all dirs, or symlinks to
+		# those, so we can expect to be able to enter them
+		[[ -e ${mdir} ]] && continue
+		mkdir "${mdir}" || return 1
+		chmod --reference "${sdir}" "${mdir}"
+		vecho "created ${mdir}"
+	done
+
 	# yay, we can finally link ;)
-	mkdir -p "${dst%/*}" || return 1
 	ln -sf "${src}" "${dst}"
 	vecho "symlinked ${src} to ${dst}"
 }

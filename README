@@ -1,0 +1,6 @@
+This is your dotfiles repo
+--------------------------
+
+It will be cloned and updated automatically on servers when you log in. By
+default you get a set of config files and bin scripts with some settings we
+find useful at booking.com. Feel free to customize as you wish.

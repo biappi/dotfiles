@@ -6,6 +6,8 @@
 
 VERBOSE=
 [[ " $* " == *" -v "* ]] && VERBOSE=yes
+FORCE=
+[[ " $* " == *" -f "* ]] && FORCE=yes
 
 bindir=$(readlink -f ${BASH_SOURCE[0]}); bindir=${bindir%/*}
 
@@ -13,7 +15,7 @@ bindir=$(readlink -f ${BASH_SOURCE[0]}); bindir=${bindir%/*}
 "${bindir}"/restore-permissions.sh ${VERBOSE+-v}
 
 # put symlinks for dotfiles in place
-"${bindir}"/link-files.sh ${VERBOSE+-v}
+"${bindir}"/link-files.sh ${VERBOSE+-v} ${FORCE+-f}
 
 # setup git defaults
 "${bindir}"/git-default-config.sh

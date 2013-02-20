@@ -3,8 +3,16 @@
 # link all files from the dotfiles repo in $HOME, iff non existant, or
 # non-changed
 
+# allow being chatty on what we do
+VERBOSE=
+[[ " $* " == *" -v "* ]] && VERBOSE=yes
+vecho() {
+	[[ -n ${VERBOSE} ]] && echo "$@"
+}
+
 # top dir of our dotfiles
-topdir=$(readlink -f ${BASH_SOURCE[0]%/bin/*})/dotfiles
+topdir=$(readlink -f ${BASH_SOURCE[0]}); topdir=${topdir%/bin/*}/dotfiles
+vecho "linking files from ${topdir}"
 # better safe than sorry
 [[ -d ${topdir} ]] || exit 1
 
@@ -19,14 +27,15 @@ maybe_link() {
 
 	if [[ -e ${dst} ]] ; then
 		# don't deal with anything but files
-		[[ -f ${dst} ]] || return 0
+		[[ -f ${dst} ]] || { vecho "${dst} is not a file"; return 0; }
 		# and don't touch symlinked files, even if they don't point to us
-		[[ -L ${dst} ]] && return 0
+		[[ -L ${dst} ]] && { vecho "leaving symlink ${dst} alone"; return 0; }
 		# compare if this file is an unmodified .skel copy, else just
 		# relink with what we're given
 		if [[ ! -e /etc/skel/${dst#${HOME}} ]] \
 			|| cmp -s "/etc/skel/${dst#${HOME}}" "${dst}" ;
 		then
+			vecho "leaving local (modified) file ${dst} alone"
 			return 0
 		fi
 	fi
@@ -34,6 +43,7 @@ maybe_link() {
 	# yay, we can finally link ;)
 	mkdir -p "${dst%/*}" || return 1
 	ln -sf "${src}" "${dst}"
+	vecho "symlinked ${src} to ${dst}"
 }
 
 # we only symlink files, never directories, this is to make sure our

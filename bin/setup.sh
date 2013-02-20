@@ -9,6 +9,9 @@ VERBOSE=
 
 bindir=$(readlink -f ${BASH_SOURCE[0]}); bindir=${bindir%/*}
 
+# restore permissions not preserved by git
+"${bindir}"/restore-permissions.sh ${VERBOSE+-v}
+
 # put symlinks for dotfiles in place
 "${bindir}"/link-files.sh ${VERBOSE+-v}
 

@@ -13,4 +13,4 @@ bindir=$(readlink -f ${BASH_SOURCE[0]}); bindir=${bindir%/*}
 "${bindir}"/link-files.sh ${VERBOSE+-v}
 
 # setup git defaults
-"${bindir}"/git-default-config
+"${bindir}"/git-default-config.sh

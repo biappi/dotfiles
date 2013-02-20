@@ -70,7 +70,7 @@ find "${topdir}" \
 	\( -name .svn -a -type d -prune \) -o \
 	\( -name .hg -a -type d -prune \) -o \
 	\( -name .bzr -a -type d -prune \) -o \
-	-type f -print | \
+	-type f -print -o -type l -print | \
 while read f ; do
 	maybe_link ${f} ${HOME}/${f#${topdir}/}
 done

@@ -11,7 +11,7 @@ vecho() {
 }
 # and to be really lethal
 FORCE=
-[[ " $* " == *" -f "* ]] && { FORCE=yes; vecho "force: overwriting all files"; }
+[[ " $* " == *" -f "* ]] && { FORCE=yes; vecho "force: moving all files away"; }
 
 # top dir of our dotfiles
 topdir=$(readlink -f ${BASH_SOURCE[0]}); topdir=${topdir%/bin/*}/dotfiles

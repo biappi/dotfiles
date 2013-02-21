@@ -47,8 +47,7 @@ maybe_link() {
 	if [[ -e ${dst} && -n ${FORCE} ]]; then
 		# preserve the file/thing we'd otherwise destroy
 		local bucketf=${dst//\//_}.$(date "+%FT%T" -r "${dst}")
-		mkdir -p "${topdir%/*}"/bit-bucket && \
-			mv "${dst}" "${topdir%/*}"/bit-bucket/${bucketf}
+		mv "${dst}" "${topdir%/*}"/bit-bucket/${bucketf}
 		vecho "moved ${dst} to ${bucketf}"
 	fi
 

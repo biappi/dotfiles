@@ -35,9 +35,11 @@ maybe_link() {
 		[[ -L ${dst} ]] && { vecho "leaving symlink ${dst} alone"; return 0; }
 		# compare if this file is an unmodified .skel copy, else just
 		# relink with what we're given
-		if [[ ! -e /etc/skel/${dst#${HOME}} ]] \
-			|| cmp -s "/etc/skel/${dst#${HOME}}" "${dst}" ;
+		if [[ -e /etc/skel/${dst#${HOME}} ]] \
+			&& cmp -s "/etc/skel/${dst#${HOME}}" "${dst}" ;
 		then
+			: this file is identical to skel, overwrite it below
+		else
 			vecho "leaving local (modified) file ${dst} alone"
 			return 0
 		fi

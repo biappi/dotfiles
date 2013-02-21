@@ -1,0 +1,5 @@
+Any files in here were moved by link-files.sh when used with -f flag.
+This is used when you ticked the "Move away existing files" option in
+office.
+It is safe to remove the files in here.  These files may contain your
+valuable modifications.  It's all in your hands.

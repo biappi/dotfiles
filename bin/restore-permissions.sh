@@ -16,6 +16,8 @@ topdir=$(readlink -f ${BASH_SOURCE[0]}); topdir=${topdir%/bin/*}
 
 pushd ${topdir} > /dev/null || exit 1
 while read line ; do
+	# ignore comments and empty lines
+	[[ -z ${line} || ${line} == "#"* ]] && continue
 	bits=${line%% *}
 	file=${line#* }
 	[[ -e ${file} ]] || { vecho "${file} no longer(?) exists"; continue; }

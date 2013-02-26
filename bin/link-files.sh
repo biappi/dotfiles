@@ -71,6 +71,9 @@ maybe_link() {
 	vecho "symlinked ${src} to ${dst}"
 }
 
+# ensure the bit-bucket exists in case we're forcing
+[[ -n ${FORCE} ]] && mkdir -p "${topdir%/*}"/bit-bucket
+
 # we only symlink files, never directories, this is to make sure our
 # files are only an overlay of what the user has in use
 # skip .{git,svn,hg,bzr} dirs because it's no good to copy their contents

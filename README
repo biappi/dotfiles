@@ -5,6 +5,12 @@ It will be cloned and updated automatically on servers when you log in. By
 default you get a set of config files and bin scripts with some settings we
 find useful at booking.com. Feel free to customize as you wish.
 
+ $USER.git
+  |
+  +-- bin dir - used for scripts
+  +-- dotfiles - this dir contains your actual . files, e.g. .bashrc
+  +-- bit-bucket - this is where your original files are moved to is they exist
+
 If you need special permissions to be retained to your files, use
   bin/record-permissions.sh
 to update the permissions.dotfiles.  This file is used after each git

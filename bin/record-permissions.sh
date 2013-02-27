@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Exit on failure
+set -e
+
 # Records permissions of everything under dotfiles and stores it, for
 # recreation later since git doesn't store file permission bits.
 # To avoid potentially storing lots of useless info, standard git

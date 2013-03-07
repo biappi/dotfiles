@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# put me in your path before screen 
+# and screen will play nice with your ssh-agent
+#    mkdir ~/bin
+#    cp screen ~/bin
+#    chmod +x ~/bin/screen
+
+if [ -z "$STY" ]; then
+    if [ ! -z "$SSH_TTY" ]; then
+        if [ ! -z "$SSH_AUTH_SOCK" ]; then
+            ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/auth-sock"
+        fi
+        export SSH_AUTH_SOCK="$HOME/.ssh/auth-sock"
+        exec /usr/bin/screen "$@"
+    fi
+else
+    exec /usr/bin/screen "$@"
+fi

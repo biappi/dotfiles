@@ -1,0 +1,9 @@
+# General .alias file
+#
+alias vi=vim
+alias ls='ls --color=yes'
+alias main='cd /usr/local/git_tree/main/'
+alias aff='cd /usr/local/cvs_tree/affiliate_data'
+alias sysadmin='cd /usr/local/git_tree/sysadmin'
+alias tailerror='DATE=`date +%Y-%m-%d`;tail -vf `find /var/log/ -type f -name error\*log -o -name error\*log.$DATE 2>/dev/null`'
+alias tailaccess='DATE=`date +%Y-%m-%d`;tail -vf `find /var/log/ -type f -name access\*log -o -name access\*log.$DATE 2>/dev/null`'

@@ -11,7 +11,7 @@ if [ -f ~/.alias ]; then
 fi
 
 # User specific aliases and functions
-export PATH=~/bin:$PATH:/sbin/usr/sbin
+export PATH=~/bin:$PATH:/sbin:/usr/sbin
 
 if [ $(id -u) -eq 0 ]
 then

@@ -2,6 +2,7 @@
 #
 alias vi=vim
 alias ls='ls --color=yes'
+alias grep='grep --color'
 alias main='cd /usr/local/git_tree/main/'
 alias aff='cd /usr/local/cvs_tree/affiliate_data'
 alias sysadmin='cd /usr/local/git_tree/sysadmin'

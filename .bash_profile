@@ -48,3 +48,7 @@ export LSCOLORS=gxFxCxDxbxegedabagaced
 export EDITOR=vim
 export VISUAL=vim
 export LESS="R"
+
+# - Antijastima
+
+export GIT_BLACKLIST_WORDS="PORCO PORCA MAIALE MAIALA DIO MADONNA porco porca maiale dio madonna"

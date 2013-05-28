@@ -10,7 +10,7 @@ set hlsearch
 set number
 set mouse=a
 
-colorscheme solarized
+colorscheme solarized-uilli
 
 highlight LineNr ctermfg=darkgray
 highlight VertSplit ctermfg=59 ctermbg=59 cterm=NONE 

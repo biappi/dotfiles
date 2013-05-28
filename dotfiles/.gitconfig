@@ -6,3 +6,6 @@
     ui = auto
 [push]
     default = upstream
+[user]
+	name = Antonio Malara
+	email = antonio.malara@booking.com

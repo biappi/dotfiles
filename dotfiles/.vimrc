@@ -10,9 +10,10 @@ set hlsearch
 set number
 set mouse=a
 
-colorscheme solarized-uilli
+let g:solarized_termcolors=256
+colorscheme solarized
 
-highlight LineNr ctermfg=darkgray
+highlight LineNr ctermfg=darkgray ctermbg=black
 highlight VertSplit ctermfg=59 ctermbg=59 cterm=NONE 
 
 set fillchars+=vert:\ 

@@ -2,6 +2,7 @@
 	hist = log --graph --color=always --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s' --all
 	co = checkout
 	branches = for-each-ref --sort=-committerdate refs/heads/
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [color]
     ui = auto
 [push]

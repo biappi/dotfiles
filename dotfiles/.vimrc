@@ -16,6 +16,8 @@ colorscheme solarized
 highlight LineNr ctermfg=darkgray ctermbg=black
 highlight VertSplit ctermfg=59 ctermbg=59 cterm=NONE 
 
+highlight Normal          ctermfg=252
+
 set fillchars+=vert:\ 
 
 source ~/.vim/cyclecolor.vim

@@ -20,3 +20,4 @@ highlight Normal          ctermfg=252
 
 set fillchars+=vert:\ 
 
+execute pathogen#infect()

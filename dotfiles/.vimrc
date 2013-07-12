@@ -20,4 +20,3 @@ highlight Normal          ctermfg=252
 
 set fillchars+=vert:\ 
 
-source ~/.vim/cyclecolor.vim
